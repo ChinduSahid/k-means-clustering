@@ -161,4 +161,6 @@ total <- rbind(Fcluster1, FCluster3)
 total2<- rbind(total, special) 
 # save file as excel
 write.csv(total2, file = "Selected 100 movies.csv")
-View(total2)
+mydata$movie_title<-as.character(mydata$movie_title)
+mydata$movie_title = substr(mydata$movie_title,1,nchar(mydata$movie_title)-1)
+mydata

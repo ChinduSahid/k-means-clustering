@@ -3,7 +3,15 @@ title: "k-means (R-code)"
 author: "CHINDU"
 output: pdf_document
 ---
-```{r,results="hide"}
+library(VIM),
+library(data.table),
+library(clustertend),
+library("NbClust"), 
+library(cluster), 
+library(factoextra),
+library(tidyverse),
+library(eeptools),
+```{r,results="hide",include=FALSE}
 library(VIM)
 library(data.table)
 library(clustertend)
@@ -12,7 +20,8 @@ library(cluster)    # clustering algorithms
 library(factoextra)
 library(tidyverse)
 library(eeptools)
-
+```
+```{r}
 mydata <- read.csv("movie_metadata.csv", header = TRUE)
 ```
 
@@ -32,7 +41,8 @@ aggr(mydata)
 ```
 
 \newpage
-#data exploration
+
+# Data exploration
 ```{r}
 par(mfrow=c(1,3), mai = c(1, 0.3, 0.2, 0.2))
 plot(mydata$gross,ylab="gross",col = "dodgerblue3",main="Gross")
@@ -41,7 +51,8 @@ plot(mydata$movie_facebook_likes,ylab="Facebook likes",col = "dodgerblue3",main=
 ```
 The plots shows some extreme values. After further investigation, some of these values were identified as data entry errors and hence will be removed in the next part.A decision was also made to only analyse movies realeased from year 2005. An assumption is made that a movie will be atleast 70mins and less than 200mins. Refer to "k-means clustering.pdf" for detailed explanation for the outlier removal carried out below.
 
-#Data cleaning (removing outliers etc)
+# Data cleaning (removing outliers etc)
+
 ```{r}
 
 #filtering out only the movies from the data (year 2005 onwards)
@@ -102,6 +113,7 @@ plot(mydata$gross, ylab="gross",col = "dodgerblue3",main="gross")
 plot(mydata$budget, ylab="budget",col ="dodgerblue3",main="budget")
 plot(mydata$movie_facebook_likes, ylab="Movie facebook likes",col="dodgerblue3",main="Facebook Likes")
 ```
+\newpage
 
 # Determining the optimal number of clusters
 The optimal number of clusters varies based on the requirements of the project. Sometimes a fixed number or clusters are pre defined.
@@ -120,6 +132,8 @@ par(mfrow=c(1,1))
 plot(1:15, wss, type="b", xlab= "Number of clusters" , ylab=" Within sum of squares",main="Elblow Plot")
 ```
 From the elbow plot we detrmine that 4 is the optimal number of clusters. This is based on the finding that after 4 clusters, the reduction in WSS is minimal.
+\newpage
+
 # Clustering
 ```{r}
 set.seed(20)
@@ -152,6 +166,7 @@ fviz_cluster(clusters,data=mydata[c(2,4)])
 aggregate(mydata[c(2,4,5)],by=list(clusters$cluster),FUN = mean)
 ```
 
+Based on the clusters severals trends were identified, based on these trends 100 movies are obtained. Refer to k-means clusering.pdf.
 ```{r}
 # extracting only movies from cluster 1 and 3
 cluster1x <- subset(mydata, cluster == 1)
