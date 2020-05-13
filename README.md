@@ -7,3 +7,10 @@ conjunction with an elbow plot to identify the optimal number of clusters. The f
 was carried out using the optimal k value, after which the k value is increased, and the analysis
 was carried out again. Using the knowledge gained from the two analysis, 100 movies were
 selected to be added to the company’s database.
+
+The explanation along with the R script:
+https://github.com/ChinduSahid/k-means-clustering/blob/master/K-means-R-explanation-.pdf
+
+For a full analysis and detailed explanation:
+https://github.com/ChinduSahid/k-means-clustering/blob/master/k-means%20clustering.pdf
+
