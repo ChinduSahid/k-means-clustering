@@ -32,6 +32,16 @@ Re-running at a second k is the step that turns this from "the elbow said 4" int
 
 R · ggplot2 · R Markdown
 
+## Running it
+
+Everything needed is in the repository — `movie_metadata.csv` is committed, so this runs as-is.
+
+```r
+Rscript install.R      # VIM, cluster, clustertend, data.table, eeptools, factoextra, tidyverse
+```
+
+Then open `k-means-clustering.Rproj` and knit `K-means R(explanation).Rmd`, or run `Clustering.R` directly.
+
 ---
 
 For current work, see [rag-eval-harness](https://github.com/ChinduSahid/rag-eval-harness) and [medallion-duckdb](https://github.com/ChinduSahid/medallion-duckdb).
