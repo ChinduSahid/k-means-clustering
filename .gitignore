@@ -1,4 +1,13 @@
-.Rproj.user
+# RStudio
+.Rproj.user/
 .Rhistory
 .RData
 .Ruserdata
+
+# knitr / rmarkdown build artefacts
+*.log
+*.aux
+*.out
+*.toc
+*_files/
+*_cache/
